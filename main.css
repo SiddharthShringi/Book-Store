@@ -1,0 +1,19 @@
+*{margin: 0px; padding: 0px;}
+
+.heading {
+	color: #fff;
+	background: #2184c6;
+	text-transform: uppercase;
+	padding: 20px;
+	font-size: 18px;
+	letter-spacing: 1px;
+	margin-top: 15px;
+	margin-bottom: 50px;
+}
+
+.btn {
+	border-radius: 0px;
+}
+.row {
+	margin-bottom: 15px;
+}
