@@ -8,10 +8,27 @@ var avalBooks = [
     },
 ];
 
+var bookList = document.getElementById('book-list');
 function displayBook(arr) {
-    arr.forEach(item => {
-
+    var allListItems = ''
+    arr.forEach((item, i) => {
+        allListItems += '<div class="row" id="data'+ i +'">'+
+                        '<div class="col-md-6">'+
+                            '<input type="text" class="form-control" value="'+item.name+'">'+
+                        '</div>'+
+                        '<div class="col-sm-2">'+
+                            '<button type="button" class="btn btn-success" id="edit'+i+'">Edit</button>'+
+                        '</div>'+
+                        '<div class="col-sm-2">'+
+                            '<button type="button" class="btn btn-success" id="update'+i+'">Update</button>'+
+                        '</div>'+
+                        '<div class="col-sm-2">'+
+                            '<button type="button" class="btn btn-danger" id="delete'+i+'">Delete</button>'+
+                        '</div>'+
+                    '</div>'
     })
+    bookList.innerHTML = allListItems;
+
 }
 
 //Add new book to array
@@ -24,33 +41,9 @@ addBook.addEventListener('click', event => {
     newBook.name = inputData;
 
     avalBooks.push(newBook);
-    console.log(avalBooks);
+    displayBook(avalBooks);
+    data.value = "";
 })
 
-
-
-// counter = 0;
-// addBook.addEventListener('click', event => {
-//     var data = document.getElementById('data');
-//     var inputData = data.value;
-//     var bookList = document.getElementById('book-list');
-
-//     var listHtml = '<div class="row" id="data'+ counter +'">'+
-//     '<div class="col-md-6">'+
-//         '<input type="text" class="form-control" value="'+inputData+'">'+
-//     '</div>'+
-//     '<div class="col-sm-2">'+
-//         '<button type="button" class="btn btn-success" id="edit'+counter+'">Edit</button>'+
-//     '</div>'+
-//     '<div class="col-sm-2">'+
-//         '<button type="button" class="btn btn-success" id="update'+counter+'">Update</button>'+
-//     '</div>'+
-//     '<div class="col-sm-2">'+
-//         '<button type="button" class="btn btn-danger" id="delete'+counter+'">Delete</button>'+
-//     '</div>'+
-// '</div>'
-//     counter++;
-//     bookList.insertAdjacentHTML('beforeend', listHtml);
-//     data.value = "";
-// });
+displayBook(avalBooks);
 
