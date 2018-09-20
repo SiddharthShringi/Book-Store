@@ -11,7 +11,7 @@ addBook.addEventListener('click', event => {
 
     var listHtml = '<div class="row" id="data'+ counter +'">'+
     '<div class="col-md-6">'+
-        '<input type="text" class="form-control">'+
+        '<input type="text" class="form-control" value="'+inputData+'">'+
     '</div>'+
     '<div class="col-sm-2">'+
         '<button type="button" class="btn btn-success">Edit</button>'+
