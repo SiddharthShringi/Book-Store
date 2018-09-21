@@ -23,7 +23,7 @@ function displayBook(arr) {
                             '<button type="button" class="btn btn-success" id="update'+i+'">Update</button>'+
                         '</div>'+
                         '<div class="col-sm-2">'+
-                            '<button type="button" class="btn btn-danger" id="delete'+i+'">Delete</button>'+
+                            '<button type="button" class="btn btn-danger" data-id="'+i+'" id="delete'+i+'">Delete</button>'+
                         '</div>'+
                     '</div>'
     })
@@ -55,7 +55,7 @@ function deleteItem() {
 
     deleteBooks.forEach(item => {
         item.addEventListener('click', event => {
-            var deleteItemIndex = event.target.dataset.index;
+            var deleteItemIndex = event.currentTarget.getAttribute('data-id');
             avalBooks.splice(deleteItemIndex, 1);
             displayBook(avalBooks);
         })
