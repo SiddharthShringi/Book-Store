@@ -28,6 +28,7 @@ function displayBook(arr) {
                     '</div>'
     })
     bookList.innerHTML = allListItems;
+    deleteItem();
 
 }
 
@@ -47,3 +48,16 @@ addBook.addEventListener('click', event => {
 
 displayBook(avalBooks);
 
+
+
+function deleteItem() {
+    var deleteBooks = document.querySelectorAll('.btn-danger');
+
+    deleteBooks.forEach(item => {
+        item.addEventListener('click', event => {
+            var deleteItemIndex = event.target.dataset.index;
+            avalBooks.splice(deleteItemIndex, 1);
+            displayBook(avalBooks);
+        })
+    })
+}
