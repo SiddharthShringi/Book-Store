@@ -14,13 +14,13 @@ function displayBook(arr) {
     arr.forEach((item, i) => {
         allListItems += '<div class="row" id="data'+ i +'">'+
                         '<div class="col-md-6">'+
-                            '<input type="text" class="form-control" value="'+item.name+'"disabled>'+
+                            '<input type="text" class="edit form-control" data-id="'+i+'" value="'+item.name+'"disabled>'+
                         '</div>'+
                         '<div class="col-sm-2">'+
-                            '<button type="button" class="btn btn-success" id="edit'+i+'">Edit</button>'+
+                            '<button type="button" class="btn btn-success" data-id="'+i+'" id="edit'+i+'">Edit</button>'+
                         '</div>'+
                         '<div class="col-sm-2">'+
-                            '<button type="button" class="btn btn-success" id="update'+i+'">Update</button>'+
+                            '<button type="button" class="btn btn-success" data-id="'+i+'" id="update'+i+'">Update</button>'+
                         '</div>'+
                         '<div class="col-sm-2">'+
                             '<button type="button" class="btn btn-danger" data-id="'+i+'" id="delete'+i+'">Delete</button>'+
@@ -61,3 +61,22 @@ function deleteItem() {
         })
     })
 }
+
+var searchField = document.getElementById("search-field");
+
+searchField.addEventListener("keydown", event => {
+    var searchString = event.target.value.toLowerCase();
+
+    var searchResult = [];
+    for(let i=0; i<avalBooks.length; i++) {
+        const bookId = avalBooks[i].name.toLocaleLowerCase();
+        
+        if (bookId.includes(searchString)) {
+            var searchBook = {};
+            searchBook.name = bookId.toLocaleUpperCase();
+            searchResult.push(searchBook);
+        }
+    }
+    displayBook(searchResult);
+})
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            

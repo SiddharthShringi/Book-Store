@@ -1,14 +1,18 @@
 *{margin: 0px; padding: 0px;}
 
-.heading {
-	color: #fff;
-	background: #2184c6;
-	text-transform: uppercase;
-	padding: 20px;
-	font-size: 18px;
-	letter-spacing: 1px;
+.head-bar {
 	margin-top: 15px;
 	margin-bottom: 50px;
+	background: #369b7e;
+	padding: 20px;
+}
+
+.heading {
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 25px;																																																																																																																																																																																																																px;
+	letter-spacing: 1px;
+	line-height: 35px;
 }
 
 .btn {
