@@ -14,7 +14,7 @@ function displayBook(arr) {
     arr.forEach((item, i) => {
         allListItems += '<div class="row" id="data'+ i +'">'+
                         '<div class="col-md-6">'+
-                            '<input type="text" class="form-control" value="'+item.name+'">'+
+                            '<input type="text" class="form-control" value="'+item.name+'"disabled>'+
                         '</div>'+
                         '<div class="col-sm-2">'+
                             '<button type="button" class="btn btn-success" id="edit'+i+'">Edit</button>'+
