@@ -44,7 +44,6 @@ function titleCase(str) {
 
 //Add new book to array
 var addBook = document.getElementById('add-book');
-counter = 0;
 addBook.addEventListener('click', event => {
     var newBook = {}
     var data = document.getElementById('data');
