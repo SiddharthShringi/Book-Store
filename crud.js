@@ -13,7 +13,6 @@ var avalBooks = JSON.parse(localStorage.getItem('booklist')) || [
 
 var avalBookString = JSON.stringify(avalBooks);
 localStorage.setItem('booklist', avalBookString);
-// var currentAvalBooks =  || avalBooks;
 
 var bookList = document.getElementById('book-list');
 function displayBook(arr) {
