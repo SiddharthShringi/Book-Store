@@ -8,10 +8,6 @@ var avalBooks = [
     },
 ];
 
-var avalBookString = JSON.stringify(avalBooks);
-localStorage.setItem('booklist', avalBookString);
-
-var currentAvalBooks = JSON.parse(localStorage.getItem('booklist')) || avalBooks
 
 var bookList = document.getElementById('book-list');
 function displayBook(arr) {
@@ -54,7 +50,6 @@ addBook.addEventListener('click', event => {
 displayBook(avalBooks);
 
 
-
 function deleteItem() {
     var deleteBooks = document.querySelectorAll('.btn-danger');
 
@@ -68,7 +63,10 @@ function deleteItem() {
 }
 
 
-// function firstUpper()
+function titleCase(str) {
+    return str.toLowerCase().split(' ').map(x=>x[0].toUpperCase()+x.slice(1)).join(' ');
+}
+  
 
 var searchField = document.getElementById("search-field");
 
@@ -77,11 +75,11 @@ searchField.addEventListener("keydown", event => {
 
     var searchResult = [];
     for(let i=0; i<avalBooks.length; i++) {
-        const bookId = avalBooks[i].name.toLocaleLowerCase();
+        const bookId = avalBooks[i].name.toLowerCase();
         
         if (bookId.includes(searchString)) {
             var searchBook = {};
-            searchBook.name = bookId.toLocaleUpperCase();
+            searchBook.name = titleCase(bookId);
             searchResult.push(searchBook);
         }
     }
