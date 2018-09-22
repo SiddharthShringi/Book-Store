@@ -8,6 +8,11 @@ var avalBooks = [
     },
 ];
 
+var avalBookString = JSON.stringify(avalBooks);
+localStorage.setItem('booklist', avalBookString);
+
+var currentAvalBooks = JSON.parse(localStorage.getItem('booklist')) || avalBooks
+
 var bookList = document.getElementById('book-list');
 function displayBook(arr) {
     var allListItems = ''
@@ -61,6 +66,9 @@ function deleteItem() {
         })
     })
 }
+
+
+// function firstUpper()
 
 var searchField = document.getElementById("search-field");
 
