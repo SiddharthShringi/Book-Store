@@ -33,6 +33,11 @@ function displayBook(arr) {
 
 }
 
+// Function to capitalize each word in string
+function titleCase(str) {
+    return str.toLowerCase().split(' ').map(x=>x[0].toUpperCase()+x.slice(1)).join(' ');
+}
+
 //Add new book to array
 var addBook = document.getElementById('add-book');
 counter = 0;
@@ -60,11 +65,6 @@ function deleteItem() {
             displayBook(avalBooks);
         })
     })
-}
-
-
-function titleCase(str) {
-    return str.toLowerCase().split(' ').map(x=>x[0].toUpperCase()+x.slice(1)).join(' ');
 }
   
 
