@@ -1,10 +1,12 @@
 var avalBooks = JSON.parse(localStorage.getItem('booklist')) || [
     {
-        name: "Thinking Fast and Slow"
+        name: "Thinking Fast and Slow",
+        edit: false
 
     },
     {
-        name: "Godan"
+        name: "Godan",
+        edit: false
     },
 ];
 
@@ -17,24 +19,23 @@ var bookList = document.getElementById('book-list');
 function displayBook(arr) {
     var allListItems = ''
     arr.forEach((item, i) => {
-        allListItems += '<div class="row" id="data'+ i +'">'+
-                        '<div class="col-md-6">'+
-                            '<input type="text" class="edit form-control" data-id="'+i+'" value="'+item.name+'"disabled>'+
-                        '</div>'+
-                        '<div class="col-sm-2">'+
-                            '<button type="button" class="btn btn-success" data-id="'+i+'" id="edit'+i+'">Edit</button>'+
-                        '</div>'+
-                        '<div class="col-sm-2">'+
-                            '<button type="button" class="btn btn-success" data-id="'+i+'" id="update'+i+'">Update</button>'+
-                        '</div>'+
-                        '<div class="col-sm-2">'+
-                            '<button type="button" class="btn btn-danger" data-id="'+i+'" id="delete'+i+'">Delete</button>'+
-                        '</div>'+
-                    '</div>'
+        allListItems += `<div class="row" id="data${i}">
+                        <div class="col-md-6">
+                            <input id="input${i}" type="text" class="form-control" data-id=${i} value="${item.name}"${item.edit ? "" : "disabled"}>
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="button" class="edit btn btn-success" data-id=${i} id="edit${i}">Edit</button>
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="button" class="update btn btn-success" data-id=${i} id="update${i}">Update</button>
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="button" class="btn btn-danger" data-id=${i} id="delete${i}">Delete</button>
+                        </div>
+                    </div>`
     })
     bookList.innerHTML = allListItems;
     deleteItem();
-
 }
 
 // Function to capitalize each word in string
@@ -50,6 +51,7 @@ addBook.addEventListener('click', event => {
     var data = document.getElementById('data');
     var inputData = data.value;
     newBook.name = inputData;
+    newBook.edit = false;
 
     avalBooks.push(newBook);
     avalBookString = JSON.stringify(avalBooks);
@@ -60,7 +62,7 @@ addBook.addEventListener('click', event => {
 
 displayBook(avalBooks);
 
-
+//Delete
 function deleteItem() {
     var deleteBooks = document.querySelectorAll('.btn-danger');
 
@@ -75,7 +77,7 @@ function deleteItem() {
     })
 }
   
-
+// Search Field
 var searchField = document.getElementById("search-field");
 
 searchField.addEventListener("keydown", event => {
@@ -93,4 +95,33 @@ searchField.addEventListener("keydown", event => {
     }
     displayBook(searchResult);
 })
+
+
+// Edit
+function editItem(e) {
+    if(e.target.className !== "edit btn btn-success") return;
+    var id = e.target.dataset.id;
+    avalBooks[id].edit = !avalBooks[id].edit;
+    avalBookString = JSON.stringify(avalBooks);
+    localStorage.setItem('booklist', avalBookString);
+    displayBook(avalBooks);
+
+}
+
+//Update
+function updateItem(e) {
+    if(e.target.className !== "update btn btn-success") return;
+    var id = e.target.dataset.id;
+    var inputVal = document.getElementById(`input${id}`);
+
+    avalBooks[id].name = inputVal.value;
+    avalBooks[id].edit = !avalBooks[id].edit;
+    avalBookString = JSON.stringify(avalBooks);
+    localStorage.setItem('booklist', avalBookString);
+    displayBook(avalBooks);
+
+}
+
+bookList.addEventListener('click', editItem)
+bookList.addEventListener('click', updateItem)
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
