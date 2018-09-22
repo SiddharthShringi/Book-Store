@@ -3,7 +3,7 @@
 .head-bar {
 	margin-top: 15px;
 	margin-bottom: 50px;
-	background: #369b7e;
+	background: #4b0881;
 	padding: 20px;
 }
 
@@ -17,6 +17,7 @@
 
 .btn {
 	border-radius: 0px;
+	width: 100%;
 }
 .row {
 	margin-bottom: 15px;
