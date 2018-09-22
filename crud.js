@@ -1,4 +1,4 @@
-var avalBooks = [
+var avalBooks = JSON.parse(localStorage.getItem('booklist')) || [
     {
         name: "Thinking Fast and Slow"
 
@@ -8,6 +8,10 @@ var avalBooks = [
     },
 ];
 
+
+var avalBookString = JSON.stringify(avalBooks);
+localStorage.setItem('booklist', avalBookString);
+// var currentAvalBooks =  || avalBooks;
 
 var bookList = document.getElementById('book-list');
 function displayBook(arr) {
@@ -48,6 +52,8 @@ addBook.addEventListener('click', event => {
     newBook.name = inputData;
 
     avalBooks.push(newBook);
+    avalBookString = JSON.stringify(avalBooks);
+    localStorage.setItem('booklist', avalBookString);
     displayBook(avalBooks);
     data.value = "";
 })
@@ -62,6 +68,8 @@ function deleteItem() {
         item.addEventListener('click', event => {
             var deleteItemIndex = event.currentTarget.getAttribute('data-id');
             avalBooks.splice(deleteItemIndex, 1);
+            avalBookString = JSON.stringify(avalBooks);
+            localStorage.setItem('booklist', avalBookString);
             displayBook(avalBooks);
         })
     })
