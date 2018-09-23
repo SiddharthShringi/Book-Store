@@ -1,9 +1,12 @@
 *{margin: 0px; padding: 0px;}
 
+.root {
+	--base: #4b0881;
+}
 .head-bar {
 	margin-top: 15px;
 	margin-bottom: 50px;
-	background: #4b0881;
+	background: var(--base);
 	padding: 20px;
 }
 
@@ -21,4 +24,7 @@
 }
 .row {
 	margin-bottom: 15px;
+}
+.base {
+	width: 100%;
 }
